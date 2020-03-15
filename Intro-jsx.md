@@ -9,11 +9,9 @@
 ```
 - it looks exactlly linea html but you would find it in a javascript file
 
-
 ### JSX Elements and their surroundings
 - JSX elementes are treated as javascript expressions
 - A JSX element can be saved in a variable, passed to a function, stored in an object or array...
-
 
 ### Attributes in JSX
 - JSX elements can have attributes, just like HTML elements can.
@@ -23,7 +21,6 @@
 const p1 = <p id = "large"> foo </p>;
 const p2 = <p id = "small"> bar </p>;
 ```
-
 
 ### Nested JSX
 - You can nest JSX elements inside of other JSX elements, just like in HTML.
@@ -47,12 +44,11 @@ const myDiv = (
 );
 ```
 
-
 ### JSX outer elements
 
 - JSX expression must have exactly one outermost element.
 - The first opening tag and the final closing tag of a JSX expression must belong to the same JSX element!
-- The solution is usually simple: wrap the JSX expression in a <div></div>.
+- The solution is usually simple: wrap the JSX expression in a div.
 
 ```javascript
 const paragraphs = (
@@ -62,7 +58,6 @@ const paragraphs = (
   </div>
 );
 ```
-
 
 ### Rendering JSX
 - To *render* a JSX expression means to make it appear on screen
@@ -75,28 +70,25 @@ ReactDOM.render(<h1>Hello world</h1>, document.getElementById('app'));
 
 - React is a JavaScript library for building User Interfaces and ReactDOM is the JavaScript library that allows React to interact with the DOM.
 
-
 ### ReactDOM.render() I
 - *ReactDOM.render()* is the most common way to render JSX.
 - It takes a JSX expression, turns it into html elements and adds it to the html document
 - *First argument*: the JSX expression to be rendered
 
 ### ReactDOM.render() II
-
 - The first argument is appended to whatever element is selected by the second argument.
 
-this:
+This:
 ```javascript
 ReactDOM.render(<h1>Render me!</h1>, document.getElementById('container'));
 ```
-will be rendered like this:
+Will be rendered like this:
 
 ```html
 <main id="container">
   <h1>Render me!</h1>
 </main>
 ```
-
 
 ### Passing a Variable to ReactDOM.render()
 
@@ -115,7 +107,6 @@ const myList = (
 
 ReactDOM.render( myList, document.getElementById( 'app' ));
 ```
-
 
 ### The virtual DOM
 - ReactDOM.render() only updates DOM elements that have changed.
