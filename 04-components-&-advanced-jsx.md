@@ -69,3 +69,47 @@ class TodaysPlan extends React.Component {
 ```
 
 ### Use _this_ in a Component
+- The word this gets used in React a lot!
+```javascript
+class IceCreamGuy extends React.Component {
+  get food() {
+    return 'ice cream';
+  }
+
+  render() {
+    return <h1>I like {this.food}.</h1>;
+  }
+}
+```
+
+- _this_ refers to the object on which this‘s enclosing method,
+- You don’t need parentheses because .food is a getter method. So its this.food and not this.food()
+
+
+### Use an Event Listener in a Component
+- Render functions often contain event listeners.
+```javascript
+    render() {
+    return (
+        <div onHover={myFunc}>
+        </div>
+    );
+    }
+```
+
+- In React, you define event handlers as methods on a component class.
+
+```javascript
+class MyClass extends React.Component {
+  myFunc() {
+    alert('Stop it.  Stop hovering.');
+  }
+
+  render() {
+    return (
+      <div onHover={this.myFunc}>
+      </div>
+    );
+  }
+}
+```
