@@ -187,3 +187,61 @@ const headline = (
 );
 ```
 
+### JSX Conditionals: &&
+- The && operator is another way of writing conditionals in React
+- && works best in conditionals that will sometimes do an action, but other times do nothing at all
+
+```javascript
+const tasty = (
+  <ul>
+    <li>Applesauce</li>
+    { !baby && <li>Pizza</li> }
+    { age > 15 && <li>Brussels Sprouts</li> }
+    { age > 20 && <li>Oysters</li> }
+    { age > 25 && <li>Grappa</li> }
+  </ul>
+);
+```
+Every time that you see && in this example, either some code will run, or else no code will run.
+
+Tips to help decide on which conditional statement or operator to use:
+
+1. The && and ternary operators are more concise, choose either of these when possible
+2. Choose the && over a ternary when you want an action to occur (or not) based on a single condition
+3. Choose an if/else/else if statement when you need to extrapolate logic to make it easier to read and understand
+
+### .map in JSX
+- If you want to create a list of JSX elements, then .map() is often your best bet.
+
+```javascript
+const strings = ['Home', 'Shop', 'About Me'];
+
+const listItems = strings.map(string => <li>{string}</li>);
+
+<ul>{listItems}</ul>
+```
+- .map() returns and a new array of < li > elements (listItems)
+
+```javascript
+// This is fine in JSX, not in an explicit array:
+
+<ul>
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ul>
+
+// This is also fine!
+
+const liArray = [
+  <li>item 1</li>, 
+  <li>item 2<li>, 
+  <li>item 3</li>
+];
+
+<ul>{liArray}</ul>
+```
+
+### Keys
+
+
