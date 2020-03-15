@@ -179,7 +179,7 @@ ReactDOM.render(
 ### JSX Conditionals: The Ternary Operator
 - There’s a more compact way to write conditionals in JSX: the ternary operator.
 
-´´´javascript
+```javascript
 const headline = (
   <h1>
     { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
