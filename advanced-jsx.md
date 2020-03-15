@@ -3,7 +3,7 @@
 ### class vs className
 - Grammar in JSX is mostly the same as in HTML, but there are subtle differences to watch out for. Probably the most frequent of these involves the word _class_.
 
--In JSX, you can’t use the word _class_! You have to use _className_ instead:
+- In JSX, you can’t use the word _class_! You have to use _className_ instead:
 
 In html:
 ```html
