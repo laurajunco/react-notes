@@ -185,5 +185,5 @@ const headline = (
     { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
   </h1>
 );
-´´´
+```
 
