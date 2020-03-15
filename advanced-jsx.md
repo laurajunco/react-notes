@@ -49,7 +49,103 @@ const p1 = <p>Hello, {name}!</p>;
 ```
 
 ### Variable Attributes in JSX
+- It is common to use variables to set attributes.
+- You can write each attribute on a different line to make code easier to read.
 
+```javascript
+const sideLength = "200px";
+const panda = (
+  <img 
+    src="images/panda.jpg" 
+    alt="panda" 
+    height={sideLength} 
+    width={sideLength} />
+);
+```
 
+- Object properties are also often used to set attributes:
 
+```javascript
+const pics = {
+  panda: "http://bit.ly/1Tqltv5",
+  owl: "http://bit.ly/1XGtkM3",
+  owlCat: "http://bit.ly/1Upbczi"
+}; 
 
+const panda = (
+  <img 
+    src={pics.panda} 
+    alt="Lazy Panda" />
+);
+```
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const goose = 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-goose.jpg';
+
+// Declare new variable here:
+const gooseImg = ( <img src= {goose} /> );
+
+ReactDOM.render( gooseImg, document.getElementById( 'app' ) );
+```
+
+### Event Listeners in JSX
+- JSX elements can have event listeners, just like HTML elements can.
+
+- You create an event listener by giving a JSX element a special attribute:
+
+```javascript
+<img onClick={myFunc} />
+```
+
+Some common event attributes:
+- onClick onDrag onMouseDown onMouseEnter onMouseLeave onFocus onScroll...
+
+- An event listener atribute's value _should_ be a function
+- On html event listeners are written all in lowercase, in JSX we use camelCase
+
+```javascript
+function myFunc() {
+  alert('this is an alert');
+}
+
+<img onClick={myFunc} />
+```
+
+```javascript
+function makeDoggy(e) {
+ 
+  e.target.setAttribute('src', 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg');
+  e.target.setAttribute('alt', 'doggy');
+}
+
+const kitty = (
+	<img 
+		src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg" 
+alt="kitty" 
+onClick={makeDoggy}
+    />
+);
+
+ReactDOM.render( kitty, document.getElementById( 'app' ) );
+
+```
+
+### JSX Conditionals: If Statements That Don't Work
+
+- You can not inject an if statement into a JSX expression.
+
+Thsi code will break:
+```javascript
+(
+  <h1>
+    {
+      if (purchase.complete) {
+        'Thank you for placing an order!'
+      }
+    }
+  </h1>
+)
+```
