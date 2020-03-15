@@ -2,7 +2,6 @@
 
 ### class vs className
 - Grammar in JSX is mostly the same as in HTML, but there are subtle differences to watch out for. Probably the most frequent of these involves the word _class_.
-
 - In JSX, you can’t use the word _class_! You have to use _className_ instead:
 
 In html:
@@ -42,7 +41,6 @@ NOT FINE AT ALL in JSX:
 ### Variables in JSX
 
 - When you inject JavaScript into JSX, that JavaScript is part of the same environment as the rest of the JavaScript in your file.
-
 - That means that you can access variables while inside of a JSX expression, even if those variables were declared on the outside:
 
 ```javascript
