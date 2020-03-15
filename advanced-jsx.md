@@ -243,5 +243,49 @@ const liArray = [
 ```
 
 ### Keys
+- When you make a list in JSX, sometimes your list will need to include something called keys:
 
+```javascript
+<ul>
+  <li key="li-01">Example1</li>
+  <li key="li-02">Example2</li>
+  <li key="li-03">Example3</li>
+</ul>
+```
+- React uses Keys internally to keep track of lists. If you don’t use keys when you’re supposed to, React might accidentally scramble your list-items into the wrong order.
 
+- The attribute’s value should be something unique, similar to an id attribute.
+
+- Not all lists need to have keys. A list needs keys if either of the following are true:
+
+1. The list-items have memory from one render to the next. For instance, when a to-do list renders, each item must “remember” whether it was checked off. The items shouldn’t get amnesia when they render.
+
+2. A list’s order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
+
+```javascript
+const people = ['Rowe', 'Prevost', 'Gare', 'Laura'];
+
+const peopleLis = people.map((person, i) => <li key={'person_'+ i }>{person}</li>
+
+ReactDOM.render(<ul>{peopleLis}</ul>, document.getElementById( 'app' ) );
+```
+
+### React.createElement
+
+- You can write React code without using JSX at all.
+
+The following JSX expression:
+```javascript
+const h1 = <h1>Hello world</h1>;
+```
+Can be rewritten without JSX, like this:
+```javascript
+const h1 = React.createElement(
+  "h1",
+  null,
+  "Hello, world"
+);
+```
+- Every JSX element is secretly a call to React.createElement().
+
+- We would use React.createElement() instead of JSX when we do not want to set up compilation for our project, which the use of JSX requires!
