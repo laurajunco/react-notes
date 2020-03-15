@@ -12,7 +12,7 @@ In html:
 
 In javascript:
 ```javascript
-<h1 classNamew="big">Hey</h1>
+<h1 className="big">Hey</h1>
 ```
 
 - When JSX is rendered, JSX className attributes are automatically rendered as class attributes
