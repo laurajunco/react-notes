@@ -1,6 +1,6 @@
 # Advanced JSX
 
-### class vs className
+### Class vs className
 - Grammar in JSX is mostly the same as in HTML, but there are subtle differences to watch out for. Probably the most frequent of these involves the word _class_.
 - In JSX, you can’t use the word _class_! You have to use _className_ instead:
 
@@ -101,7 +101,7 @@ ReactDOM.render( gooseImg, document.getElementById( 'app' ) );
 ```
 
 Some common event attributes:
-- onClick onDrag onMouseDown onMouseEnter onMouseLeave onFocus onScroll...
+ #### onClick onDrag onMouseDown onMouseEnter onMouseLeave onFocus onScroll...
 
 - An event listener atribute's value _should_ be a function
 - On html event listeners are written all in lowercase, in JSX we use camelCase
@@ -116,16 +116,15 @@ function myFunc() {
 
 ```javascript
 function makeDoggy(e) {
- 
   e.target.setAttribute('src', 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg');
   e.target.setAttribute('alt', 'doggy');
 }
 
 const kitty = (
-	<img 
-		src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg" 
-alt="kitty" 
-onClick={makeDoggy}
+    <img 
+        src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg" 
+        alt="kitty" 
+        onClick={makeDoggy}
     />
 );
 
@@ -149,3 +148,42 @@ Thsi code will break:
   </h1>
 )
 ```
+
+### JSX Conditionals: If Statements That Do Work
+
+- One option to write conditionals in react is to write them *Outside* JSX elements
+
+```javascript
+let message;
+
+if (user.age >= drinkingAge) {
+  message = (
+    <h1>
+      Hey, check out this alcoholic beverage!
+    </h1>
+  );
+} else {
+  message = (
+    <h1>
+      Hey, check out these earrings I got at Claire's!
+    </h1>
+  );
+}
+
+ReactDOM.render(
+  message, 
+  document.getElementById('app')
+);
+```
+
+### JSX Conditionals: The Ternary Operator
+- There’s a more compact way to write conditionals in JSX: the ternary operator.
+
+´´´javascript
+const headline = (
+  <h1>
+    { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
+  </h1>
+);
+´´´
+
