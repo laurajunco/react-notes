@@ -1,13 +1,13 @@
 # Intro to JSX
 
 ### What is JSX?
-- a basic unit of JSX is called JSX element
-- an example of a JSX element: 
+- A basic unit of JSX is called JSX element
+- Here is an example of a JSX element: 
 
 ```javascript
 <h1>Hello world</h1>
 ```
-- it looks exactlly linea html but you would find it in a javascript file
+- It looks exactlly linea html but you would find it in a javascript file
 
 ### JSX Elements and their surroundings
 - JSX elementes are treated as javascript expressions
@@ -61,7 +61,6 @@ const paragraphs = (
 
 ### Rendering JSX
 - To *render* a JSX expression means to make it appear on screen
-
 - The following code will render a JSX expression:
 
 ```javascript
