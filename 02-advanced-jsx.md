@@ -136,7 +136,7 @@ ReactDOM.render( kitty, document.getElementById( 'app' ) );
 
 - You can not inject an if statement into a JSX expression.
 
-Thsi code will break:
+This code will break:
 ```javascript
 (
   <h1>
