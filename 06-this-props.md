@@ -77,6 +77,11 @@ render() {
 
 How do you define an event handler in React?
 - You define an event handler as a method on the component class, just like the render method. Almost all functions that you define in React will be defined in this way, as methods in a class.
+```javascript
+handleEvent() {
+
+}
+```
 
 ```javascript
 
@@ -97,3 +102,60 @@ class Example extends React.Component {
 }
 
 ```
+
+### Pass an Event Handler as a prop
+
+- You can pass a method in the exact same way that you pass any other information
+
+```javascript
+render() {
+    return <Button talk= { this.talk } />;
+}
+```
+
+### Receive an Event Handler as a prop
+
+- How do you do that? The same way that you attach any event handler to a JSX element: you give that JSX element a special attribute. The attribute’s name should be something like onClick or onHover. The attribute’s value should be the event handler that you want to attach.
+
+```javascript
+export class Button extends React.Component {
+  render() {
+    return (
+      <button onClick={this.props.talk}>
+        Click me!
+      </button>
+    );
+  }
+}
+```
+
+### Naming event handlers
+
+- If you are listening for a “click” event, then you name your event handler handleClick. If you are listening for a “keyPress” event, then you name your event handler handleKeyPress:
+
+```javascript
+class MyClass extends React.Component {
+  handleHover() {
+    alert('I am an event handler.');
+    alert('I will be called in response to "hover" events.');
+  }
+}
+```
+
+- Your prop name should be the word on, plus your event type. If you are listening for a “click” event, then you name your prop onClick. If you are listening for a “keyPress” event, then you name your prop onKeyPress:
+
+```javascript
+render() {
+    return <Child onHover={this.handleHover} />;
+  }
+```
+
+```javascript
+<button onClick={this.props.onClick}>
+        Click me!
+</button>
+```
+
+
+### this.props.children
+
