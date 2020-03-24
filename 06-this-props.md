@@ -159,3 +159,51 @@ render() {
 
 ### this.props.children
 
+- Every component’s props object has a property named children.
+
+- this.props.children will return everything in between a component’s opening and closing JSX tags.
+
+- all of the components that you’ve seen have been self-closing tags, such as <MyComponentClass />. They don’t have to be! You could write <MyComponentClass></MyComponentClass>, and it would still work.
+
+```javascript
+    <List type='Living Musician'> //opening tag
+        <li>Sachiko M</li> //child
+        <li>Harvey Sid Fisher</li> //child
+    </List> //closing tag
+```
+
+```javascript
+export class List extends React.Component {
+  render() {
+    let titleText = {this.props.type}
+    return (
+      <div>
+        <h1>{titleText}</h1>
+        <ul>
+          {this.props.children}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+### defaultProps
+
+- If no information is passed to component prop, you can give default properties to that component.
+
+- The defaultProps property should be equal to an object:
+
+```javascript
+class Example extends React.Component {
+  render() {
+    return <h1>{this.props.text}</h1>;
+  }
+}
+
+// Set defaultProps equal to an object:
+Example.defaultProps = {
+    text: 'yo'
+};
+```
+
