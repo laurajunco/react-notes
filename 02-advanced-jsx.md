@@ -289,3 +289,70 @@ const h1 = React.createElement(
 - Every JSX element is secretly a call to React.createElement().
 
 - We would use React.createElement() instead of JSX when we do not want to set up compilation for our project, which the use of JSX requires!
+
+
+### Update state with this.setState
+
+- A component can do more than just read its own state. A component can also change its own state.
+
+- A component changes its state by calling the function this.setState().
+
+- this.setState() takes two arguments: an object that will update the component’s state, and a callback. You basically never need the callback.
+
+```javascript
+{
+  mood:   'great',
+  hungry: false
+}
+```
+Now, let’s say that <Example /> were to call:
+
+```javascript
+this.setState({ hungry: true });
+```
+After that call, here is what <Example />‘s state would be:
+
+```javascript
+{
+  mood:   'great',
+  hungry: true
+}
+```
+
+- this.setState() takes an object, and merges that object with the component’s current state. If there are properties in the current state that aren’t part of that object, then those properties remain how they were.
+
+### Call this.setState from Another Function
+
+- The most common way to call this.setState() is to call a custom function that wraps a this.setState() call.
+
+
+```javascript
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { weather: 'sunny' };
+    this.makeSomeFog = this.makeSomeFog.bind(this);
+  }
+
+  makeSomeFog() {
+    this.setState({
+      weather: 'foggy'
+    });
+  }
+}
+```
+
+this.makeSomeFog = this.makeSomeFog.bind(this); is necessary because makeSomeFog()‘s body contains the word this.
+
+- in React, whenever you define an event handler that uses this, you need to add this.methodName = this.methodName.bind(this) to your constructor function.
+
+- you can’t call this.setState() from inside of the render function! 
+
+
+### this.setState Automatically Calls render
+
+- Any time that you call this.setState(), this.setState() AUTOMATICALLY calls .render() as soon as the state has changed.
+
+- Think of this.setState() as actually being two things: this.setState(), immediately followed by .render().
+
+- That is why you can’t call this.setState() from inside of the .render() method! this.setState() automatically calls .render(). If .render() calls this.setState(), then an infinite loop is created.
