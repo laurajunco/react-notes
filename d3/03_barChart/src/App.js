@@ -7,12 +7,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <Navbar bg="light">
           <Navbar.Brand>Bar chart</Navbar.Brand>
         </Navbar>
+
         <Container>
           <ChartWrapper />
         </Container>
+        
       </div>
     );
   }
