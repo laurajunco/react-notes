@@ -4,13 +4,10 @@ import D3Chart from './D3Chart';
 class ChartWrapper extends Component {
     constructor(props) {
         super(props);
-
-        //crear referencia a elemento
         this.ref = React.createRef();
     }
 
     componentDidMount() {
-        //target the node element on the page 
         var element = this.ref.current;
         new D3Chart(element);
     }

@@ -1,36 +1,30 @@
 import * as d3 from 'd3';
-/* not a React component */
 
-//const data = [20, 12, 17, 4, 25];
-const url = "https://udemy-react-d3.firebaseio.com/ages.json";
+const url = "https://udemy-react-d3.firebaseio.com/tallest_men.json";
 
 class D3Chart {
 
     //recibe el elemento contenedor
     constructor(element) {
 
-        var svg = d3.select(element)
+        const svg = d3.select(element)
                 .append("svg")
-                .attr("width", 500)
+                .attr("width", 800)
                 .attr("height", 500);
 
-        d3.json(url).then(function(dataset){
+        d3.json(url).then(dataset => {
             console.log(dataset);
 
+            //rects
             var rects = svg.selectAll("rect")
                 .data(dataset)
                 .enter()
                 .append("rect")
                 .attr("x", (d, i) => i * 50)
-                .attr("y", 50)
+                .attr("y", 0)
                 .attr("width", 40)
-                .attr("height", d => d.age * 10)
-                .attr("fill", d => {
-                    if (d.age > 10){
-                        return "red";
-                    }
-                    return "grey";
-                });
+                .attr("height", d => d.height)
+                .attr("fill", "grey");
         })
     }
 }
@@ -38,3 +32,4 @@ class D3Chart {
 export default D3Chart;
 
 // npm install --save d3
+//npm install react-bootstrap bootstrap
