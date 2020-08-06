@@ -85,10 +85,15 @@ class D3Chart {
             .data(vis.dataset)
 
         //EXIT
-        rects.exit().remove()
+        rects.exit()
+            .transition().duration(200)
+                .attr("height", 0)
+                .attr("y", d => height)
+                .remove()
 
         //UPDATE
-        rects.attr("x", d => x(d.name))
+        rects.transition().duration(500)
+            .attr("x", d => x(d.name))
             .attr("y", d => y(d.height))
             .attr("width", x.bandwidth)
             .attr("height", d => height - y(d.height))
@@ -98,14 +103,20 @@ class D3Chart {
         rects.enter()
             .append("rect")
             .attr("x", d => x(d.name))
-            .attr("y", d => y(d.height))
             .attr("width", x.bandwidth)
-            .attr("height", d => height - y(d.height))
-            .attr("fill", "grey");
-
+            .attr("fill", "grey")
+            .attr("y", d => height)
+            .transition().duration(500)
+                .attr("y", d => y(d.height))
+                .attr("height", d => height - y(d.height))
+            
         //drawAxis
-        vis.xAxisGroup.call(xAxisCall); 
-        vis.yAxisGroup.call(yAxisCall);
+        vis.xAxisGroup
+            .transition().duration(500)
+            .call(xAxisCall); 
+        vis.yAxisGroup
+            .transition().duration(500)
+            .call(yAxisCall); 
     }
 }
 
