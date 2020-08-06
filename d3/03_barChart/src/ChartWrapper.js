@@ -9,7 +9,20 @@ class ChartWrapper extends Component {
 
     componentDidMount() {
         var element = this.ref.current;
-        new D3Chart(element);
+        this.setState({
+            chart: new D3Chart(element)
+        })
+            
+    }
+
+    shouldComponentUpdate() {
+        //stop rerendering
+        return false;
+    }
+
+    componentWillReceiveProps(nextProps) {
+        //corre cada vez que se le mandan nuevas props al componente
+        this.state.chart.update(nextProps.gender);
     }
 
     render() {

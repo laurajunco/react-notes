@@ -27,7 +27,6 @@ class D3Chart {
             .attr("x", width / 2)
             .attr("y", height + 50)
             .attr("text-anchor", "middle")
-            .text("The worlds tallest men")
 
         vis.yLabel = this.svg.append("text")
             .attr("x", -(height / 2))
@@ -45,24 +44,18 @@ class D3Chart {
             d3.json("https://udemy-react-d3.firebaseio.com/tallest_men.json"),
             d3.json("https://udemy-react-d3.firebaseio.com/tallest_women.json")
         ]).then((datasets) => {
-            const[men, women] = datasets;
-            let flag = true;
-
-            vis.dataset = men;
-            vis.update();
+            vis.menData = datasets[0];
+			vis.womenData = datasets[1];
+            vis.update("men");
             
-            d3.interval(() => {
-                vis.dataset = flag ? men : women;
-                vis.update();
-                flag = !flag;
-
-            }, 1000);
         })
     }
 
-    //cosas que se ctualizan
-    update () {
+    //cosas que se actualizan
+    update (gender) {
         const vis = this;
+        vis.dataset = (gender === "men") ? vis.menData : vis.womenData;
+        vis.xLabel.text(`The worlds tallest ${gender}`);
 
         //scales
         var y = d3.scaleLinear()

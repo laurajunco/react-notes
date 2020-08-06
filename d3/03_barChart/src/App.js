@@ -26,16 +26,19 @@ class App extends Component {
         </Navbar>
 
         <Container>
+
           <Row>
             <Col xs={12}>
               <GenderDropdown genderSelected={this.genderSelected}/>
             </Col>
           </Row>
+
           <Row>
             <Col xs={12}>
-              <ChartWrapper />
+              <ChartWrapper gender={this.state.gender}/>
             </Col>
           </Row>
+          
         </Container>
         
       </div>
