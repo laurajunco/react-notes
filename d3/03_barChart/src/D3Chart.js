@@ -72,10 +72,22 @@ class D3Chart {
         var xAxisCall = d3.axisBottom(x);
         var yAxisCall = d3.axisLeft(y);
 
-        //rects
+        //Data JOIN
         var rects = vis.svg.selectAll("rect")
             .data(vis.dataset)
-            .enter()
+
+        //EXIT
+        rects.exit().remove()
+
+        //UPDATE
+        rects.attr("x", d => x(d.name))
+            .attr("y", d => y(d.height))
+            .attr("width", x.bandwidth)
+            .attr("height", d => height - y(d.height))
+            .attr("fill", "grey");
+
+        // ENTER create elements
+        rects.enter()
             .append("rect")
             .attr("x", d => x(d.name))
             .attr("y", d => y(d.height))
